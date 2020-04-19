@@ -1,5 +1,6 @@
 import React  from 'react';
 import StatusList from'./StatusList.js';
+import './Status.css'
 class StatusAll extends React.Component {
   constructor(probs) {
     super(probs);
@@ -15,7 +16,14 @@ class StatusAll extends React.Component {
     }
     this.handlechange = this.handlechange.bind(this);
     this.handlesubmit = this.handlesubmit.bind(this);
+    this.delete = this.delete.bind(this);
 
+   }
+   delete(index)
+   {
+     let copy = [...this.state.statuses];
+     copy.splice(index,1)
+     this.setState({statuses :  copy});
    }
    handlechange(ev)  {
 
@@ -45,7 +53,8 @@ class StatusAll extends React.Component {
             </div>
             <div className="Status">
               <h4> all status < /h4>
-              <StatusList statuses={this.state.statuses} />
+              <StatusList statuses={this.state.statuses}
+              delete={this.delete} />
             </div>
       </div>
 

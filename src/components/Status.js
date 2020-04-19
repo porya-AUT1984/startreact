@@ -6,6 +6,7 @@ class Status extends React.Component {
     likes : 0
   }
   this.like = this.like.bind(this);
+  this.delete = this.delete.bind(this);
   }
   like()
    {
@@ -14,9 +15,17 @@ class Status extends React.Component {
 
 })
    }
+   delete()
+   {
+     console.log('delete', this.props.index )
+     this.props.delete(this.props.index)
+   }
   render(){
     return(
         <div className="Status">
+            <div className="close"
+              onClick={this.delete}  > X </div>
+
             <p> {this.props.t} </p>
             <p> <button onClick={this.like}>
              {this.state.likes} like </button> </p>
